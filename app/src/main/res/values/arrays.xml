@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="dish_type">
+        <item>火锅</item>
+        <item>湘菜</item>
+        <item>川菜</item>
+        <item>粤菜</item>
+        <item>茶餐厅</item>
+        <item>烧烤</item>
+        <item>海鲜</item>
+        <item>东北菜</item>
+    </array>
+</resources>

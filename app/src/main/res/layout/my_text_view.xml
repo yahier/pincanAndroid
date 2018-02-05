@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lin"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="4dp">
+
+    <ImageView
+        android:id="@+id/imgPoster"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@mipmap/wukong" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/tvNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:elevation="5dp"
+                android:text="2人"
+                android:textColor="#333"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tvBudget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="5dp"
+                android:paddingLeft="15dp"
+                android:text="70块"
+                android:textColor="#666"
+                android:textSize="16dp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tvDishType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="5dp"
+                android:paddingLeft="15dp"
+                android:text="火锅"
+                android:textColor="#666"
+                android:textSize="16dp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tvFlavor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="5dp"
+                android:paddingLeft="15dp"
+                android:text="微辣"
+                android:textColor="#666"
+                android:textSize="16dp"
+                android:visibility="visible" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvMapPosition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="5dp"
+                android:paddingLeft="15dp"
+                android:text="万胜围广场为什么牛火锅"
+                android:textColor="#666"
+                android:textSize="16dp"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="#ddd" />
+    </LinearLayout>
+</LinearLayout>
