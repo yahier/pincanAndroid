@@ -9,8 +9,10 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
+
+import pincan.yahier.com.pincan.model.RequestBean;
 
 /**
  * Created by yahier on 2018/2/5.
@@ -18,8 +20,8 @@ import java.util.Set;
  */
 
 public class HttpUtils {
-    final static String TAG = "HttpUtils";
-    static OkHttpClient client;
+    private final static String TAG = "HttpUtils";
+    private static OkHttpClient client;
 
     static {
         client = new OkHttpClient();
@@ -53,12 +55,14 @@ public class HttpUtils {
         });
     }
 
-    public static void post(String url, HashMap<String, String> params, OnSucceedListener succeedListener) {
+    public static void post(String url, RequestBean obj, OnSucceedListener succeedListener) {
         FormEncodingBuilder builder = new FormEncodingBuilder();
-        if (params != null) {
+        if (obj != null) {
+            Map<String, String> params = ObjectUtils.convertToMap(obj);
             Set<String> keys = params.keySet();
             for (String key : keys) {
                 builder.add(key, params.get(key));
+                LogUtils.logE("params", key + ":" + params.get(key));
             }
         }
 

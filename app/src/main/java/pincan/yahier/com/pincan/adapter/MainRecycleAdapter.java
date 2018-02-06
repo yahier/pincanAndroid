@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import pincan.yahier.com.pincan.R;
-import pincan.yahier.com.pincan.model.MainItem;
+import pincan.yahier.com.pincan.model.Pincan;
 
 /**
  * Created by yahier on 2018/1/25.
@@ -26,63 +26,62 @@ public class MainRecycleAdapter extends RecyclerView.Adapter<MainRecycleAdapter.
 
         public ViewHolder(View v) {
             super(v);
-            tvNum = (TextView) v.findViewById(R.id.tvNum);
-            tvBudget = (TextView) v.findViewById(R.id.tvBudget);
-            lin = v.findViewById(R.id.lin);
+            tvNum = v.findViewById(R.id.tvNum);
+            tvBudget = v.findViewById(R.id.tvBudget);
+            lin = v.findViewById(R.id.pincanlin);
             tvBudget.setVisibility(View.VISIBLE);
         }
     }
 
 
-    List<MainItem> list = null;
+    List<Pincan> list = null;
 
-    public MainRecycleAdapter(List<MainItem> list) {
+    public MainRecycleAdapter(List<Pincan> list, OnItemClickListener listener) {
+        this.listener = listener;
         this.list = list;
+
+        //虚造数据
+        if (list.size() == 0) {
+            for (int i = 0; i < 20; i++) {
+                Pincan pincan = new Pincan();
+                pincan.personNum = "3人";
+                pincan.flavor = "微辣";
+                pincan.dishType = "客家菜";
+                pincan.budget = "60";
+                list.add(pincan);
+            }
+        }
+
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public MainRecycleAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                            int viewType) {
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.my_text_view, parent, false);
-
+    public MainRecycleAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_text_view, parent, false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-
         if (list.size() <= position) return;
-        MainItem item = list.get(position);
+        Pincan item = list.get(position);
         if (item == null) return;
 
-        holder.tvNum.setText(item.getTitle());
-        if (TextUtils.isEmpty(item.getDes())) {
+        holder.tvNum.setText(item.personNum);
+        if (TextUtils.isEmpty(item.budget)) {
             holder.tvBudget.setVisibility(View.GONE);
         } else {
             holder.tvBudget.setVisibility(View.VISIBLE);
-            holder.tvBudget.setText(item.getDes());
+            holder.tvBudget.setText(item.budget);
         }
 
-        holder.lin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onItemClck(position);
-            }
-        });
-
+        holder.lin.setOnClickListener(v -> listener.onItemClck(position));
     }
 
     @Override
     public int getItemCount() {
-        return 18;
-    }
-
-
-    public void setOnItemClick(OnItemClickListener listener) {
-        this.listener = listener;
+        return list.size();
     }
 
     OnItemClickListener listener;

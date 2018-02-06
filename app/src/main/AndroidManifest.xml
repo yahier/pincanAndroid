@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".act.AddPincanAct" />
+        <activity android:name=".act.PincanDetailActivity" />
     </application>
 
 </manifest>

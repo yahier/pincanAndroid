@@ -5,11 +5,11 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/MAIN</item>
     </style>
 
     <style name="Theme_Activity" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorAccent">@color/NEW_COLOR_ACCENT</item>
+        <item name="colorAccent">@color/MAIN</item>
         <item name="colorPrimary">@color/MAIN</item>
         <item name="colorPrimaryDark">@color/MAIN</item>
         <item name="windowActionBar">false</item>

@@ -1,5 +1,6 @@
 package pincan.yahier.com.pincan.act;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +10,7 @@ import java.util.List;
 
 import pincan.yahier.com.pincan.R;
 import pincan.yahier.com.pincan.adapter.MainRecycleAdapter;
-import pincan.yahier.com.pincan.model.MainItem;
+import pincan.yahier.com.pincan.model.Pincan;
 
 /**
  * 首页 可供选择的拼餐列表页面
@@ -31,9 +32,14 @@ public class MainActivity extends BaseActivity {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
 
-        List<MainItem> list = new ArrayList<>();
-        MainRecycleAdapter adapter = new MainRecycleAdapter(list);
+        List<Pincan> list = new ArrayList<>();
+        MainRecycleAdapter adapter = new MainRecycleAdapter(list, i -> {
+
+            Intent intent = new Intent(MainActivity.this, PincanDetailActivity.class);
+            startActivity(intent);
+        });
         recyclerView.setAdapter(adapter);
+
 
         System.out.println(this);
     }

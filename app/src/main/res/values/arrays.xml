@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="dish_type">
+        <item>任意</item>
         <item>火锅</item>
         <item>湘菜</item>
         <item>川菜</item>
@@ -9,5 +10,13 @@
         <item>烧烤</item>
         <item>海鲜</item>
         <item>东北菜</item>
+    </array>
+
+    <array name="flavor_type">
+        <item>任意</item>
+        <item>清淡</item>
+        <item>微辣</item>
+        <item>中辣</item>
+        <item>不辣不欢</item>
     </array>
 </resources>
