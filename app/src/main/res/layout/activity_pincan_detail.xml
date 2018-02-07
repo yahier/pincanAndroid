@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:hint="人数"
+            android:text="2"
             android:inputType="number" />
     </android.support.design.widget.TextInputLayout>
 
@@ -37,6 +38,7 @@
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:gravity="center_vertical"
+                android:text="点心"
                 android:hint="美食类别" />
         </android.support.design.widget.TextInputLayout>
 
@@ -61,6 +63,7 @@
             <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/inputFlavor"
                 android:layout_width="match_parent"
+                android:text="清淡"
                 android:layout_height="wrap_content"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
@@ -88,6 +91,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:hint="预算(元)"
+            android:text="70"
             android:inputType="number" />
     </android.support.design.widget.TextInputLayout>
 
@@ -101,13 +105,14 @@
             android:layout_height="wrap_content">
 
             <android.support.v7.widget.AppCompatEditText
+                android:text="海珠区赤沙路蒸善美"
                 android:id="@+id/inputChooseMap"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:gravity="center_vertical"
-                android:hint="地图" />
+                android:hint="位置" />
         </android.support.design.widget.TextInputLayout>
 
         <ImageView
@@ -119,6 +124,27 @@
             android:src="@drawable/blue_down"
             android:textSize="12dp" />
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已经加入"
+            android:textSize="16dp" />
+
+        <LinearLayout
+            android:id="@+id/linJoinedPeople"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnJoin"

@@ -21,4 +21,8 @@
         android:foregroundGravity="right"
         android:text="text" />
 
+    <TextView
+        android:id="@+id/text_Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </FrameLayout>

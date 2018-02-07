@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/inputAddress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="输入位置"
+            android:maxLength="10"
+            android:paddingLeft="10dp"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/tvSearch"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="right|center_vertical"
+            android:text="搜索"
+            android:textColor="#555555"
+            android:textSize="16dp" />
+    </FrameLayout>
+
+
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true" />
+
+    <Button
+        android:id="@+id/btnLocate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|bottom"
+        android:layout_margin="32dp"
+        android:gravity="center"
+        android:text="定" />
+
+</FrameLayout>

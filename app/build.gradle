@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "pincan.yahier.com.pincan"
+        applicationId "com.yahier.pincan"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
@@ -12,6 +12,12 @@ android {
         android.compileOptions.sourceCompatibility 1.8
         android.compileOptions.targetCompatibility 1.8
     }
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -26,6 +32,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
