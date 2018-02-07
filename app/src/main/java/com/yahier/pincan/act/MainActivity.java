@@ -9,12 +9,19 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.SDKInitializer;
 import com.yahier.pincan.R;
 import com.yahier.pincan.adapter.MainRecycleAdapter;
 import com.yahier.pincan.model.Pincan;
+import com.yahier.pincan.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +32,7 @@ import java.util.List;
  */
 public class MainActivity extends BaseActivity {
     RecyclerView recyclerView;
+    final String TAG = getClass().getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +40,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         initViews();
         initMapReceiver();
-        findViewById(R.id.btnPost).setOnClickListener(v -> startActivity(AddPincanAct.class));
+        initLocate();
     }
 
     void initViews() {
@@ -49,8 +57,7 @@ public class MainActivity extends BaseActivity {
         });
         recyclerView.setAdapter(adapter);
 
-
-        System.out.println(this);
+        findViewById(R.id.btnPost).setOnClickListener(v -> startActivity(AddPincanAct.class));
     }
 
     SDKReceiver mReceiver;
@@ -63,6 +70,22 @@ public class MainActivity extends BaseActivity {
         mReceiver = new SDKReceiver();
         registerReceiver(mReceiver, iFilter);
     }
+
+    LocationClient mLocClient;
+
+    private void initLocate() {
+        mLocClient = new LocationClient(this);
+
+        mLocClient.registerLocationListener(new MyLocationListenner());
+        LocationClientOption option = new LocationClientOption();
+        option.setOpenGps(true); // 打开gps
+        option.setCoorType("bd09ll"); // 设置坐标类型
+        option.setScanSpan(1000);
+        option.setIsNeedAddress(true);//设置了这个，location中才有街道信息了
+        mLocClient.setLocOption(option);
+        mLocClient.start();
+    }
+
 
     @Override
     protected void onDestroy() {
@@ -87,9 +110,28 @@ public class MainActivity extends BaseActivity {
             } else if (s.equals(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_OK)) {
                 text.setText("key 验证成功! 功能可以正常使用");
                 text.setTextColor(Color.YELLOW);
+                text.setVisibility(View.GONE);
             } else if (s.equals(SDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR)) {
                 text.setText("网络出错");
             }
         }
+    }
+
+    /**
+     * 定位SDK监听函数
+     */
+    public class MyLocationListenner implements BDLocationListener {
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            // map view 销毁后不在处理新接收的位置
+            if (location == null) {
+                return;
+            }
+            LogUtils.logE(TAG, location.getAddrStr());
+            Toast.makeText(MainActivity.this, location.getAddrStr(), Toast.LENGTH_SHORT).show();
+            double mCurrentLat = location.getLatitude();
+            double mCurrentLon = location.getLongitude();
+        }
+
     }
 }

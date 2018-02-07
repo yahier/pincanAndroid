@@ -46,7 +46,6 @@ public class MapChooseLocationActivity extends BaseActivity implements OnGetGeoC
     private MyLocationData locData;
     private float mCurrentAccracy;
     private int mCurrentDirection = 0;
-    public MyLocationListenner myListener = new MyLocationListenner();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -91,7 +90,7 @@ public class MapChooseLocationActivity extends BaseActivity implements OnGetGeoC
         mBaiduMap.setBuildingsEnabled(true);//自行添加的
         // 定位初始化
         mLocClient = new LocationClient(this);
-        mLocClient.registerLocationListener(myListener);
+        mLocClient.registerLocationListener(new MyLocationListenner());
         LocationClientOption option = new LocationClientOption();
         option.setOpenGps(true); // 打开gps
         option.setCoorType("bd09ll"); // 设置坐标类型
